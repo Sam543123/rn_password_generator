@@ -4,16 +4,18 @@ import React, { useState } from 'react'
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 // Form validation
-import * as Yup from 'yup'
 import { Formik } from 'formik';
-// YOUTUBE:
-const PasswordSchema = Yup.object({
-  passwordLength: Yup.number()
+import { number, object } from 'yup';
+
+
+const PasswordSchema = object({
+  passwordLength: number()
     .min(4, 'Should be min of 4 characters')
     .max(16, 'Should be max of 16 characters')
     .required('Length is required')
 
 })
+
 export default function App() {
 
   const [password, setPassword] = useState('')
@@ -116,39 +118,47 @@ export default function App() {
                 </View>
                 <View style={styles.inputWrapper}>
                   <Text style={styles.heading}>Include lowercase</Text>
-                  <BouncyCheckbox
-                    disableBuiltInState
-                    isChecked={lowerCase}
-                    onPress={() => setLowerCase(!lowerCase)}
-                    fillColor="#29AB87"
-                  />
+                  <View>
+                    <BouncyCheckbox
+                      disableBuiltInState
+                      isChecked={lowerCase}
+                      onPress={() => setLowerCase(!lowerCase)}
+                      fillColor="#29AB87"
+                    />
+                  </View>
                 </View>
                 <View style={styles.inputWrapper}>
                   <Text style={styles.heading}>Include Uppercase letters</Text>
-                  <BouncyCheckbox
-                    disableBuiltInState
-                    isChecked={upperCase}
-                    onPress={() => setupperCase(!upperCase)}
-                    fillColor="#FED85D"
-                  />
+                  <View>
+                    <BouncyCheckbox
+                      disableBuiltInState
+                      isChecked={upperCase}
+                      onPress={() => setupperCase(!upperCase)}
+                      fillColor="#FED85D"
+                    />
+                  </View>
                 </View>
                 <View style={styles.inputWrapper}>
                   <Text style={styles.heading}>Include Numbers</Text>
-                  <BouncyCheckbox
-                    disableBuiltInState
-                    isChecked={numbers}
-                    onPress={() => setNumbers(!numbers)}
-                    fillColor="#C9A0DC"
-                  />
+                  <View>
+                    <BouncyCheckbox
+                      disableBuiltInState
+                      isChecked={numbers}
+                      onPress={() => setNumbers(!numbers)}
+                      fillColor="#C9A0DC"
+                    />
+                  </View>
                 </View>
                 <View style={styles.inputWrapper}>
                   <Text style={styles.heading}>Include Symbols</Text>
-                  <BouncyCheckbox
-                    disableBuiltInState
-                    isChecked={symbols}
-                    onPress={() => setSymbols(!symbols)}
-                    fillColor="#FC80A5"
-                  />
+                  <View>
+                    <BouncyCheckbox
+                      disableBuiltInState
+                      isChecked={symbols}
+                      onPress={() => setSymbols(!symbols)}
+                      fillColor="#FC80A5"
+                    />
+                  </View>
                 </View>
                 <View style={styles.formActions}>
                   <TouchableOpacity
